@@ -132,53 +132,8 @@ bot.interactionCommand({
     code: `$interactionUpdate[;{newEmbed: {author:$userTag[$authorID]:$userAvatar[$authorID]} {description:**__Welcomer__**\n• \`autorole, autorole bots add, autorole bots remove, autorole bots, autorole config, autorole humans add, autorole humans remove, autorole humans, autorole reset all, autorole reset bots, autorole reset humans, autorole reset, greet channel add, greet channel remove, greet channel, greet\`} {footer:Showing page 1/10:$userAvatar[$clientID]} {color:00FFB5}};{actionRow: {selectMenu:welcomer:Please choose a page.:1:1::}
 
 {selectMenuOptions:Self Roles:selfroles:Get all commands related to selfroles::<:PanAngel:1104077952985079869>}
-{selectMenuOptions:Welcomer:welcomer:Get all commands related to selfroles::<a:CN_welcome:1104061416157237278>}}]
-    `})
-bot.interactionCommand({
-    name: "selfroles",
-    prototype: "selectMenu",
-    code: `$interactionUpdate[;{newEmbed: {author:$userTag[$authorID]:$userAvatar[$authorID]} {description:**__Selfroles__**\n• \`• selfrole create, selfrole delete, selfrole show, selfrole\`} {footer:Showing page 2/10:$userAvatar[$clientID]} {color:00FFB5}};{actionRow: {selectMenu:welcomer:Please choose a page.:1:1::}
 
-{selectMenuOptions:Self Roles:selfroles:Get all commands related to selfroles::<:PanAngel:1104077952985079869>}
-{selectMenuOptions:Welcomer:welcomer:Get all commands related to selfroles::<a:CN_welcome:1104061416157237278>}}]
-    `})
-bot.awaitedCommand({
-name: "idpchannel",
-code: '$title[1;🛠 IDP Manager (2/5)]     $description[1;What is the ID for the custom?]                     $footer[1;Dont reply anything within the next min to cancel this process.]          $color[1;00FF99] $awaitMessages[$channelId;$authorId;1m;everything;customid;{newEmbed: {description:You Failed To Provide Custom ID In Time. Try Again!} {color:ff0000}}]      $setGuildVar[idpchannel;$mentionedChannels[1]] $onlyPerms[manageguild;{newEmbed: {title:Permission Error!}{field:You need MANAGE_GUILD permission to use this command.} {footer:Requested by $userTag[$authorID]} {color:ff0000}}]           $onlyBotPerms[sendmessages;**❌ | I dont have enough perms to execute this command. Permissions missing:** SEND_MESSAGES]           $onlyIf[$channelExists[$mentionedChannels[1;no]]==true;{newEmbed: {description:Use the command again and this time mention a channel existing in this server.} {color:ff0000}}]                            '  
-})
 
-bot.awaitedCommand({
-name: "customid",
-code: '$title[1;🛠 IDP Manager (3/5)]     $description[1;What is the pass for the custom?]                     $footer[1;Dont reply anything within the next min to cancel this process.]          $color[1;00FFB5] $awaitMessages[$channelId;$authorId;1m;everything;custompass;{newEmbed: {description:You Failed To Provide Custom pass In Time. Try Again!} {color:FF0000}}]    $setGuildVar[customid;$message[1]] $onlyPerms[manageguild;{newEmbed: {title:Permission Error!}{field:You need MANAGE_GUILD permission to use this command.} {footer:Requested by $userTag[$authorID]} {color:ff0000}}]           $onlyBotPerms[sendmessages;**❌ | I dont have enough perms to execute this command. Permissions missing:** SEND_MESSAGES] $suppressErrors[An error occured while executing this command please report this issue on our support server] '
-})
-bot.awaitedCommand({
-name: "custompass",
-code: '$title[1;🛠 IDP Manager (4/5)]     $description[1;What is the MAP for the custom?]                     $footer[1;Dont reply anything within the next min to cancel this process.]          $color[1;00FFB5] $awaitMessages[$channelId;$authorId;1m;everything;custommap;{newEmbed: {description:You Failed To Provide Custom MAP In Time. Try Again!} {color:Ff0000}}]    $setGuildVar[custompass;$message] $onlyPerms[manageguild;{newEmbed: {title:Permission Error!}{field:You need MANAGE_GUILD permission to use this command.} {footer:Requested by $userTag[$authorID]} {color:ff0000}}]     $onlyBotPerms[sendmessages;**❌ | I dont have enough perms to execute this command. Permissions missing:** SEND_MESSAGES] $suppressErrors[An error occured while executing this command please report this issue on our support server]'
-})
-bot.awaitedCommand({
-name: "custommap",
-code: '$title[1;🛠 IDP Manager (5/5)]     $description[1;What is the Start Time for the custom?]                     $footer[1;Dont reply anything within the next min to cancel this process.]          $color[1;00FFB5] $awaitMessages[$channelId;$authorId;1m;everything;customtime;{newEmbed: {description:You Failed To Provide Custom MAP In Time. Try Again!} {color:FF0000}}]    $setGuildVar[custommap;$message[1]] $onlyPerms[manageguild;{newEmbed: {title:Permission Error!}{field:You need MANAGE_GUILD permission to use this command.} {footer:Requested by $userTag[$authorID]} {color:ff0000}}]            $onlyBotPerms[sendmessages;**❌ | I dont have enough perms to execute this command. Permissions missing:** SEND_MESSAGES] $suppressErrors[An error occured while executing this command please report this issue on our support server]'
-})
-bot.awaitedCommand({
-name: "customtime",
-code: '$description[1;Are you sure to send the idp in <#$getGuildVar[idpchannel]>?]     $footer[1;Type “confirm” to confirm or dont send any msg in the next 1m to cancel the process.]          $color[1;00FFB5] $awaitMessages[$channelId;$authorId;1m;confirm;confirmation;{newEmbed: {description:You Failed To Provide Confirmation In Time. Try Again!} {color:FF0000}}]    $setGuildVar[customtime;$message[1]] $onlyPerms[manageguild;{newEmbed: {title:Permission Error!}{field:You need MANAGE_GUILD permission to use this command.} {footer:Requested by $userTag[$authorID]} {color:ff0000}}]            $onlyBotPerms[sendmessages;**❌ | I dont have enough perms to execute this command. Permissions missing:** SEND_MESSAGES] $suppressErrors[An error occured while executing this command please report this issue on our support server]'
-})
-//
-bot.awaitedCommand({
-name: "confirmation",
-code: '$channelSendMessage[$getGuildVar[idpchannel];{newEmbed: {author:Quantum:$userAvatar[$clientId]} {title:Custom IDP} {description: ID: \`$getGuildVar[customid]\`\nPASS: \`$getGuildVar[custompass]\`\nMAP: \`$getGuildVar[custommap]\`\nSTART TIME: \`$getGuildVar[customtime]\`} {color:00FFB5} {footer:$guildName Custom IDP.:$guildIcon}}]         $description[1;<:tickYes:1093488664312561775> | **Successfully sent the idp in <#$getGuildVar[idpchannel]>.**]            $color[1;00FFB5]           $suppressErrors[An error occured while executing this command please report this issue on our support server]'
-})
-//Command Example (ping)
-bot.command({
-name: "ping",
-code: `Pong! $pingms`
-})
-bot.command({
-name: "eval",
-code: `✅
-$eval[$message]
-$onlyForIds[1023911727613607937;]`
-})
 
 //Command Handler loader
 
