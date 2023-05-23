@@ -1,0 +1,13 @@
+{
+  "devDependencies": {
+    "node": "^16.6.1"
+  },
+  "dependencies": {
+    "@akarui/aoi.music": "^2.2.1",
+    "@akarui/aoi.panel": "^0.0.4",
+    "@discordjs/builders": "^1.6.2",
+    "aoi.js": "^6.2.6",
+    "aoi.parser": "^1.2.5",
+    "simply-djs": "^3.0.2"
+  }
+}
